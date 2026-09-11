@@ -1,4 +1,9 @@
 CareerTrack 🚀
+## 📸 Project Preview
+
+![CareerTrack Dashboard](screenshot.png)
+
+CareerTrack is a responsive web application...
 
 CareerTrack is a responsive web application designed to help users organize and track their career and job-search activities in one place.
 
