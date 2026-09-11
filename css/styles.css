@@ -1,0 +1,884 @@
+/* ================================
+   GLOBAL STYLES
+================================ */
+:root{
+    --bg-color:#f3f4f6;
+    --card-color:#ffffff;
+    --text-color:#111827;
+    --secondary-text:#6b7280;
+    --border-color:#d1d5db;
+    --button-color:#2563eb;
+    --button-text:#ffffff;
+}
+body.dark-mode{
+    --bg-color:#111827;
+    --card-color:#1f2937;
+    --text-color:#f9fafb;
+    --secondary-text:#d1d5db;
+    --border-color:#374151;
+    --button-color:#3b82f6;
+    --button-text:#ffffff;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* ================================
+   HEADER
+================================ */
+
+header {
+    background:var(--card-color);
+    color:var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+}
+/* Navigation */
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+nav a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+nav a:hover {
+    color: white;
+}
+/* Theme button */
+
+#themeBtn {
+    border: none;
+    background: #374151;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#themeBtn:hover {
+    background: #4b5563;
+}
+/* ================================
+   MAIN
+================================ */
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 25px;
+}
+/* ================================
+   SECTIONS
+================================ */
+section {
+    margin-bottom: 50px;
+}
+section h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #111827;
+}
+/* ================================
+   STATISTICS
+================================ */
+.stats-container {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card h3 {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #111827;
+}
+/*======================================
+  DASHBOARD
+  ======================================*/
+#dashboard{
+    margin-bottom: 40px;
+}
+#dashboard h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+/*======================================
+  APPLICATIONS
+  ======================================*/
+#applications{
+    margin-top: 30px;
+}
+#applications h2{
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+/* ================================
+   ADD BUTTON
+================================ */
+
+#addJobBtn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+#addJobBtn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+/* ================================
+   APPLICATION LIST
+================================ */
+#applicationList {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 20px;
+}
+/* Application card */
+
+.application-card {
+    background: var(--card-color);
+    color:var(--text-color);
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.application-card:hover {
+    transform: translateY(-4px);
+}
+
+.application-card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.application-card p {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+/* Status */
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-applied {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-interview {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-selected {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+/* Tablets */
+
+@media (max-width: 900px) {
+    .stats-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    #applicationList {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    header {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+
+    main {
+        padding: 25px 15px;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    #applicationList {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================
+   APPLICATION FORM
+================================ */
+.form-container {
+    display: none;
+    background: var(--card-color);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.form-container.active {
+    display: block;
+}
+.form-container h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+.form-container input,
+.form-container select{
+    background: var(--card-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+/* Inputs */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Input focus */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2563eb;
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Form buttons */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Submit button */
+.form-buttons button[type="submit"] {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.form-buttons button[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+#submitBtn{
+    background: #2563eb;
+    color:#d1d5db;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Cancel button */
+#cancelBtn {
+    background: #e5e7eb;
+    color: #374151;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#cancelBtn:hover {
+    background: #d1d5db;
+}
+
+
+/* ================================
+   CARD BUTTONS
+================================ */
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+/* Edit button */
+.edit-btn {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 7px;
+    background: #e5e7eb;
+    color: #374151;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-btn:hover {
+    background: #d1d5db;
+}
+
+/* Delete button */
+.delete-btn {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 7px;
+    background: #fee2e2;
+    color: #991b1b;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+/*======================================
+  SEARCH AND FILTER
+=======================================*/
+.filter-container{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+    background: var(--card-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}  
+.filter-group label{
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.filter-group input,
+.filter-group select{
+    width: 100%;
+    padding: 11px;
+    background: var(--card-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+.filter-group input:focus,
+.filter-group select:focus{
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* mobile */
+@media(max-width:600px){
+    .filter-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+/*==================================
+  NO RESULTS
+=====================================*/
+.no-results{
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+    background: white;
+    border-radius: 12px;
+}
+/*=========================================
+  ANALYTICS
+=========================================*/
+#analytics{
+    margin-top: 40px;
+}
+#analytics h2{
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+#analyticsContainer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.analytics-card{
+    background: var(--card-color);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+.analytics-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+.analytics-card h3{
+    margin-bottom:10px;
+    font-size: 15px;
+    color: var(--secondary-text);
+}
+.analytics-card p{
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--button-color);
+}
+
+@media(max-width:900px){
+    #analyticsContainer{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .charts-grid{
+        grid-template-columns: 1fr;
+    }
+}
+@media(max-width:600px){
+    #analyticsContainer{
+        grid-template-columns: 1fr;
+    }
+    .analytics-card{
+        padding: 20px;
+    }
+    .analytics-card p{
+        font-size: 26px;
+    }
+    .status-breakdown{
+        padding: 20px;
+    }
+    .chart-card{
+        padding: 15px;
+    }
+    .chart-container{
+        height: 250px;
+    }
+}
+.status-breakdown{
+    margin-top: 25px;
+    background: var(--card-color);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+.status-breakdown h3{
+    margin-bottom: 20px;
+}
+.status-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.status-row:last-child{
+    border-bottom: none;
+}
+.status-row span:last-child{
+    font-weight: bold;
+    font-size: 16px;
+}
+#themeToggle{
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--button-color);
+    color: var(--button-text);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+#themeToggle:hover{
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/*=======================================
+  FORM VALIDATION
+========================================*/
+.error-message{
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #dc2626;
+    min-height: 16px;
+}
+.input-error{
+    border: 1px solid #dc2626 !important;
+    background: #fef2f2 !important; 
+}
+.success-message{
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #dcfce7;
+    color: #166534;
+    display: none;
+    font-weight: bold;
+}
+.success-message.show{
+    display: block;
+}
+
+#apiSection{
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--card-color);
+    color: var(--button-color);
+    border-radius: 12px;
+}
+#apiSection h2{
+    color: var(--text-color);
+}
+#loadApiData{
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--button-color);
+    color: var(--button-text);
+    cursor: pointer;
+}
+#apiStatus{
+    margin: 15px 0;
+    color: var(--secondary-text);
+}
+#apiJobs{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+.api-job-card{
+    padding: 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--card-color);
+}
+.api-job-card h3{
+    margin-bottom: 8px;
+}
+.api-job-card p{
+    color: var(--secondary-text);
+}
+@media (max-width:900px){
+    #apiJobs{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width:600px){
+    #apiJobs{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   CHARTS
+======================================== */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+.chart-card {
+    background: var(--card-color);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+.chart-card h3 {
+    margin-bottom: 20px;
+}
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+/* ========================================
+   RESPONSIVE CHARTS
+======================================== */
+@media (max-width: 900px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .chart-card {
+        padding: 15px;
+    }
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* ========================================
+   KANBAN BOARD
+======================================== */
+#kanbanSection {
+    margin-top: 30px;
+}
+.section-header {
+    margin-bottom: 20px;
+}
+.section-header h2 {
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+.section-header p {
+    color: var(--secondary-text);
+    margin: 0;
+}
+.kanban-board {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(250px, 1fr));
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+.kanban-column {
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    min-height: 450px;
+    transition: 0.2s;
+}
+.kanban-column.drag-over {
+    transform: scale(1.01);
+    border: 2px dashed var(--button-color);
+}
+.kanban-column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.kanban-column-header h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+.kanban-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 7px;
+    border-radius: 50%;
+    background: var(--button-color);
+    color: var(--button-text);
+    font-size: 13px;
+    font-weight: bold;
+}
+.kanban-cards {
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.kanban-card {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: grab;
+    transition: 0.2s;
+}
+.kanban-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+}
+.kanban-card:active {
+    cursor: grabbing;
+}
+.kanban-card.dragging {
+    opacity: 0.5;
+}
+.kanban-card h4 {
+    margin: 0 0 8px;
+    color: var(--secondary-text);
+}
+.kanban-card p {
+    margin: 4px 0;
+    color: var(--secondary-text);
+    font-size: 14px;
+}
+.kanban-date {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--secondary-text);
+}
+.empty-column {
+    text-align: center;
+    padding: 40px 10px;
+    color: var(--secondary-text);
+    font-size: 14px;
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+}
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1100px) {
+    .kanban-board {
+        grid-template-columns:
+            repeat(2, minmax(250px, 1fr));
+    }
+}
+@media (max-width: 650px) {
+    .kanban-board {
+        grid-template-columns:
+            repeat(4, 280px);
+            overflow-x: auto;
+    }
+    .kanban-column{
+        min-height: 400px;
+    }
+}
+
+*{
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+img,canvas{
+    max-width: 100%;
+}
+body{
+    overflow-x: hidden;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-container img{
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+.logo-container h1{
+    margin: 0;
+}

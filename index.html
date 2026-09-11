@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+            content="width=device-width, initial-scale=1.0">
+    <title>CareerTrack - Job Application Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="logo-container">
+            <img src="assets/LOGO.jpeg" alt="CareerTrack Logo">
+            <h1>CareerTrack</h1>
+        </div>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#applications">Applications</a>
+            <a href="#analytics">Analytics</a>
+        </nav>
+        <div class="logo-container">
+            <img src="assets/LOGO.jpeg" alt="CareerTrack Logo">
+        </div>
+        <button id="themeToggle">🌙Dark Mode</button>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <!-- Dashboard -->
+        <section id="dashboard">
+            <h2>Career Dashboard</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Applications</h3>
+                    <p id="totalApplications">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Interviews</h3>
+                    <p id="interviews">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Selected</h3>
+                    <p id="selected">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Rejected</h3>
+                    <p id="rejected">0</p>
+                </div>
+            </div>
+        </section>
+        <!-- Applications -->
+        <section id="applications">
+            <h2>Job Applications</h2>
+            <button id="addJobBtn">
+                + Add Application
+            </button>
+            <!-- Search and Filter -->
+            <div class="filter-container">
+                <!-- Search -->
+                <div class="filter-group">
+                    <label for="searchInput">
+                       Search
+                    </label>
+                    <input
+                       type="text"
+                       id="searchInput"
+                       placeholder="Search company or position..."
+                    >
+                </div>
+                <!-- Status Filter -->
+                <div class="filter-group">
+                    <label for="statusFilter">
+                        Status
+                    </label>
+                    <select id="statusFilter">
+                        <option value="All">
+                             All
+                        </option>
+                        <option value="Applied">
+                             Applied
+                        </option>
+                        <option value="Interview">
+                            Interview
+                        </option>
+                        <option value="Selected">
+                            Selected
+                        </option>
+                        <option value="Rejected">
+                            Rejected
+                        </option>
+                    </select>
+                </div>
+                <!-- Sort -->
+                <div class="filter-group">
+                    <label for="sortFilter">
+                        Sort
+                    </label>
+                    <select id="sortFilter">
+                        <option value="newest">
+                             Newest First
+                        </option>
+                        <option value="oldest">
+                            Oldest First
+                        </option>
+                        <option value="company">
+                            Company A-Z
+                        </option>
+                        <option value="position">
+                            Position A-Z
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- Add Application Form -->
+            <div id="applicationFormContainer" class="form-container">
+              <form id="applicationForm">
+        <!-- Company -->
+               <div class="form-group">
+                  <label for="company">
+                      Company
+                  </label>
+                  <input
+                      type="text"
+                      id="company"
+                      placeholder="Enter Company Name"
+                  >
+                  <small class="error-message" id="companyError">
+                  </small>
+               </div>
+                <!-- Position -->
+               <div class="form-group">
+                   <label for="position">
+                       Position
+                   </label>
+                   <input
+                      type="text"
+                      id="position"
+                      placeholder="Enter Job Position"
+                   >
+                   <small class="error-message" id="positionError"></small>
+              </div>
+             <!-- Status -->
+              <div class="form-group">
+                 <label for="status">
+                    Select Status
+                 </label>
+                 <select id="status">
+                    <option value="">
+                       Select Status
+                    </option>
+                    <option value="Applied">
+                        Applied
+                    </option>
+                    <option value="Interview">
+                       Interview
+                    </option>
+                    <option value="Selected">
+                       Selected
+                    </option>
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+                 </select>
+                 <small class="error-message" id="statusError"></small>
+              </div>
+             <!-- Date -->
+             <div class="form-group">
+                <label for="date">
+                    Application Date
+                </label>
+                <input
+                   type="date"
+                   id="date"
+                >
+                <small class="error-message" id="dateError"></small>
+             </div>
+            <!-- Buttons -->
+               <button type="submit" id="submitBtn">
+                   Add Application
+               </button>
+            <div class="form-buttons"></div>
+               <button
+                   type="button"
+                   id="cancelBtn"
+               >
+                  Cancel
+               </button>
+             </div>
+              </form>
+              <div id="successMessage" class="success-message"></div>
+            </div>   
+            <div id="applicationList">
+                <!-- Applications will appear here -->
+            </div>
+        </section>
+        <!-- ========================================
+            KANBAN BOARD
+        ======================================== -->
+        <section id="kanbanSection">
+            <div class="section-header">
+                <h2>Application Kanban Board</h2>
+                <p>
+                    Drag applications between columns
+                    to update their status.
+                </p>
+            </div>
+            <div class="kanban-board">
+                <!-- APPLIED -->
+                <div
+                    class="kanban-column"
+                    data-status="Applied"
+                >
+                    <div class="kanban-column-header">
+                        <h3>Applied</h3>
+                        <span
+                         id="kanbanAppliedCount"
+                         class="kanban-count">
+                         0
+                        </span>
+                    </div>
+                    <div
+                        id="appliedColumn"
+                        class="kanban-cards"
+                    ></div>
+                </div>
+                <!-- INTERVIEW -->
+                <div
+                    class="kanban-column"
+                    data-status="Interview"
+                >
+                    <div class="kanban-column-header">
+                        <h3>Interview</h3>
+                        <span
+                            id="kanbanInterviewCount"
+                            class="kanban-count">
+                            0
+                        </span>
+                    </div>
+                    <div
+                        id="interviewColumn"
+                        class="kanban-cards"
+                    ></div>
+                </div>
+                <!-- SELECTED -->
+                <div
+                    class="kanban-column"
+                    data-status="Selected"
+                >
+                    <div class="kanban-column-header">
+                        <h3>Selected</h3>
+                        <span
+                            id="kanbanSelectedCount"
+                            class="kanban-count">
+                            0
+                        </span>
+                    </div>
+                    <div
+                        id="selectedColumn"
+                        class="kanban-cards"
+                    ></div>
+                </div>
+                <!-- REJECTED -->
+                <div
+                    class="kanban-column"
+                    data-status="Rejected"
+                >
+                    <div class="kanban-column-header">
+                        <h3>Rejected</h3>
+                        <span
+                            id="kanbanRejectedCount"
+                            class="kanban-count">
+                            0
+                        </span>
+                    </div>
+                    <div
+                        id="rejectedColumn"
+                        class="kanban-cards"
+                    ></div>
+                </div>
+            </div>
+        </section>
+        <!-- Analytics -->
+        <section id="analytics">
+            <h2>Analytics</h2>
+            <!-- Analytics Cards -->
+            <div id="analyticsContainer">
+                <!-- Interview Rate -->
+                <div class="analytics-card">
+                    <h3>Interview Rate</h3>
+                    <p id="interviewRate">0%</p>
+                </div>
+                <!-- Selection Rate -->
+                <div class="analytics-card">
+                    <h3>Selection Rate</h3>
+                    <p id="selectionRate">0%</p>
+                </div>
+                <!-- Rejection Rate -->
+                <div class="analytics-card">
+                    <h3>Rejection Rate</h3>
+                    <p id="rejectionRate">0%</p>
+                </div>
+                <!-- Applications Sent -->
+                <div class="analytics-card">
+                    <h3>Applications Sent</h3>
+                    <p id="applicationsSent">0</p>
+                </div>
+            </div>
+            <!-- Status Breakdown -->
+            <div class="status-breakdown">
+                <h3>Application Status Breakdown</h3>
+                <div class="status-row">
+                    <span>Applied</span>
+                    <span id="appliedCount">0</span>
+                </div>
+                <div class="status-row">
+                    <span>Interview</span>
+                    <span id="interviewCount">0</span>
+                </div>
+                <div class="status-row">
+                    <span>Selected</span>
+                    <span id="selectedCount">0</span>
+                </div>
+                <div class="status-row">
+                    <span>Rejected</span>
+                    <span id="rejectedCount">0</span>
+                </div>
+            </div>
+            <!-- Charts -->
+            <div class="charts-grid">
+                <!-- Status Chart -->
+                <div class="chart-card">
+                    <h3>Applications by Status</h3>
+                    <div class="chart-container">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+                <!-- Company Chart -->
+                <div class="chart-card">
+                    <h3>Applications by Company</h3>
+                    <div class="chart-container">
+                        <canvas id="companyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="apiSection">
+            <h2>API Data</h2>
+            <button id="loadApiData">Load Sample Jobs</button>
+            <div id="apiStatus"></div>
+            <div id="apiJobs"></div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/kanban.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
